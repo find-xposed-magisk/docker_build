@@ -77,11 +77,11 @@ jobs:
       run: |
           bash ./../youdao/build/获取版本号.sh
 
-    - name: build_arm64
+    - name: 占位1
       run: |
           bash ./../youdao/build/$MYORIGINAL_REPOSITORY/build.arm64.sh
             
-    - name: build
+    - name: buildx
       run: |
           bash ./../youdao/build/$MYORIGINAL_REPOSITORY/build.sh
           docker images
