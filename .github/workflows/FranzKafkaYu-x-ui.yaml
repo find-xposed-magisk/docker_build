@@ -10,7 +10,7 @@ env:
 on:
   workflow_dispatch:
   repository_dispatch:
-    types: [dockerbuild]
+    types: [chufa]
   # schedule:
   #   - cron: '0 */4 * * *'
   release:
