@@ -1,1 +1,148 @@
+name: build_baota_clear.yaml
 
+env:
+  ORIGINAL_OWNER: 1
+  ORIGINAL_REPOSITORY: 1
+  MYORIGINAL_REPOSITORY: youdao
+  UPSTREAM_BRANCH: main
+  MY_BRANCH: main
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [1]
+  # schedule:
+  #   - cron: '0 */4 * * *'
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.MYGITHUB_TOKEN }}
+    steps:
+    - name: set env
+      run: |
+          echo "ORIGINAL_OWNER=${{ env.ORIGINAL_OWNER }}" >> $GITHUB_ENV
+          echo "ORIGINAL_REPOSITORY=${{ env.ORIGINAL_REPOSITORY }}" >> $GITHUB_ENV
+          echo "MYORIGINAL_REPOSITORY=${{ env.MYORIGINAL_REPOSITORY }}" >> $GITHUB_ENV
+          echo "UPSTREAM_BRANCH=${{ env.UPSTREAM_BRANCH }}" >> $GITHUB_ENV
+          echo "MY_BRANCH=${{ env.MY_BRANCH }}" >> $GITHUB_ENV
+          echo "GH_TOKEN=${{ secrets.MYGITHUB_TOKEN }}" >> $GITHUB_ENV
+          echo "repository_owner=${{ github.repository_owner }}" >> $GITHUB_ENV
+          echo "repository=${{ github.repository }}" >> $GITHUB_ENV
+          echo "MYPASSWD=${{ secrets.MYPASSWD }}" >> $GITHUB_ENV
+          echo "MYSALT=${{ secrets.MYSALT }}" >> $GITHUB_ENV
+          echo "DOCKER_TOKEN=${{ secrets.DOCKER_TOKEN }}" >> $GITHUB_ENV
+
+    - name: Use Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16
+  
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+        
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: 安装依赖 Install dependencies
+      run: sudo apt-get install jq curl
+
+    - name: key
+      run: |
+          wget --no-check-certificate -O ../key.sh https://git.blog.jiangqing.xyz/shell/linux/actions/key.sh
+          bash ../key.sh
+
+    - name: 克隆脚本仓库 (Clone and Reset)
+      run: |
+          echo "开始克隆和重置 (Start cloning and resetting) git@github.com:$repository_owner/$MYORIGINAL_REPOSITORY.git -b $MY_BRANCH $MYORIGINAL_REPOSITORY"
+          git clone git@github.com:$repository_owner/$MYORIGINAL_REPOSITORY.git -b $MY_BRANCH ./../$MYORIGINAL_REPOSITORY
+          if [ $? -ne 0 ]; then
+            echo "克隆失败：无法克隆仓库"
+            exit 1
+          fi
+          echo "克隆和重置完成 (Cloning and resetting completed)"
+
+    - name: 登录dockerhub并执行脚本
+      run: |
+          bash ./../$MYORIGINAL_REPOSITORY/build/登录docker.sh
+            
+    - name: build
+      run: |
+          bash ./../$MYORIGINAL_REPOSITORY/build/baota/build_clear.sh
+          docker images
+
+    - name: push
+      run: |
+          bash ./../$MYORIGINAL_REPOSITORY/build/baota/push_clear.sh
+          
+    - name: 占位1
+      run: |
+          echo "占位"
+
+    - name: 占位1
+      run: |
+          echo "占位"
+
+    - name: 占位1 
+      run: |
+          echo "占位"
+          
+    - name: 占位1
+      run: |
+          echo "占位"
+
+    - name: 占位1
+      run: |
+          echo "占位"
+  
+    - name: 占位1
+      run: |
+          echo "占位"
+  
+    - name: 占位1 
+      run: |
+          echo "占位"
+            
+    - name: 占位1
+      run: |
+          echo "占位"
+
+          - name: 占位1
+          run: |
+              echo "占位"
+    
+    - name: 占位1
+      run: |
+          echo "占位"
+
+    - name: 占位1 
+      run: |
+          echo "占位"
+          
+    - name: 占位1
+      run: |
+          echo "占位"
+
+    - name: 占位1
+      run: |
+          echo "占位"
+  
+    - name: 占位1
+      run: |
+          echo "占位"
+  
+    - name: 占位1 
+      run: |
+          echo "占位"
+            
+    - name: 占位1
+      run: |
+          echo "占位"
