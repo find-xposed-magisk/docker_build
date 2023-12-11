@@ -75,12 +75,12 @@ jobs:
             
     - name: build
       run: |
-          bash ./../youdao/build/MYORIGINAL_REPOSITORY/build_clear.sh
+          bash ./../youdao/build/MYORIGINAL_REPOSITORY/build.sh
           docker images
 
     - name: push
       run: |
-          bash ./../youdao/build/MYORIGINAL_REPOSITORY/push_clear.sh
+          bash ./../youdao/build/MYORIGINAL_REPOSITORY/push.sh
           
     - name: 占位1
       run: |
