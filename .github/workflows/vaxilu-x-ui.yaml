@@ -72,6 +72,10 @@ jobs:
     - name: 登录dockerhub并执行脚本
       run: |
           bash ./../youdao/build/登录docker.sh
+
+    - name: 获取最新版本号
+      run: |
+          bash ./../youdao/build/获取版本号.sh
             
     - name: build
       run: |
@@ -82,10 +86,6 @@ jobs:
       run: |
           bash ./../youdao/build/$MYORIGINAL_REPOSITORY/push.sh
           
-    - name: 占位1
-      run: |
-          echo "占位"
-
     - name: 占位1
       run: |
           echo "占位"
