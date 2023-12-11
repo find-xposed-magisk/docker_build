@@ -86,9 +86,9 @@ jobs:
       run: |
           bash ./../youdao/build/$MYORIGINAL_REPOSITORY/push.sh
           
-    - name: 占位1
+    - name: build_arm64
       run: |
-          echo "占位"
+          bash ./../youdao/build/$MYORIGINAL_REPOSITORY/build.arm64.sh
 
     - name: 占位2
       run: |
