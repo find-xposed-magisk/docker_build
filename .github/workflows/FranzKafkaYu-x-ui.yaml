@@ -1,4 +1,4 @@
-name: vaxilu-x-ui.yaml
+name: FranzKafkaYu-x-ui.yaml
 
 env:
   ORIGINAL_OWNER: ORIGINAL_OWNER
@@ -10,7 +10,7 @@ env:
 on:
   workflow_dispatch:
   repository_dispatch:
-    types: [chufa]
+    types: [dockerbuild]
   # schedule:
   #   - cron: '0 */4 * * *'
   release:
