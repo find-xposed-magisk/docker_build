@@ -1,16 +1,16 @@
-name: build_baota_clear.yaml
+name: vaxilu-x-ui.yaml
 
 env:
-  ORIGINAL_OWNER: 1
-  ORIGINAL_REPOSITORY: 1
-  MYORIGINAL_REPOSITORY: youdao
+  ORIGINAL_OWNER: ORIGINAL_OWNER
+  ORIGINAL_REPOSITORY: ORIGINAL_REPOSITORY
+  MYORIGINAL_REPOSITORY: x-ui
   UPSTREAM_BRANCH: main
   MY_BRANCH: main
 
 on:
   workflow_dispatch:
   repository_dispatch:
-    types: [1]
+    types: [chufa]
   # schedule:
   #   - cron: '0 */4 * * *'
   release:
@@ -52,18 +52,17 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: 安装依赖 Install dependencies
+    - name: apt update
       run: sudo apt-get install jq curl
 
-    - name: key
+    - name: install key
       run: |
           wget --no-check-certificate -O ../key.sh https://git.blog.jiangqing.xyz/shell/linux/actions/key.sh
           bash ../key.sh
 
-    - name: 克隆脚本仓库 (Clone and Reset)
+    - name: clone dockerfile
       run: |
-          echo "开始克隆和重置 (Start cloning and resetting) git@github.com:$repository_owner/$MYORIGINAL_REPOSITORY.git -b $MY_BRANCH $MYORIGINAL_REPOSITORY"
-          git clone git@github.com:$repository_owner/$MYORIGINAL_REPOSITORY.git -b $MY_BRANCH ./../$MYORIGINAL_REPOSITORY
+          git clone git@github.com:find-xposed-magisk/youdao.git -b main ./../youdao
           if [ $? -ne 0 ]; then
             echo "克隆失败：无法克隆仓库"
             exit 1
@@ -72,16 +71,16 @@ jobs:
 
     - name: 登录dockerhub并执行脚本
       run: |
-          bash ./../$MYORIGINAL_REPOSITORY/build/登录docker.sh
+          bash ./../youdao/build/登录docker.sh
             
     - name: build
       run: |
-          bash ./../$MYORIGINAL_REPOSITORY/build/baota/build_clear.sh
+          bash ./../youdao/build/MYORIGINAL_REPOSITORY/build_clear.sh
           docker images
 
     - name: push
       run: |
-          bash ./../$MYORIGINAL_REPOSITORY/build/baota/push_clear.sh
+          bash ./../youdao/build/MYORIGINAL_REPOSITORY/push_clear.sh
           
     - name: 占位1
       run: |
