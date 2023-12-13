@@ -86,4 +86,4 @@ jobs:
 
     - name: push
       run: |
-          bash ./../youdao/build/$MYORIGINAL_REPOSITORY/push.sh
+          bash ./../youdao/build/push.sh
