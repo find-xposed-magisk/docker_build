@@ -81,7 +81,7 @@ jobs:
             
     - name: buildx
       run: |
-          bash ./../youdao/build/$MYORIGINAL_REPOSITORY/build.sh
+          bash ./../youdao/build/build.sh
           docker images
 
     - name: push
