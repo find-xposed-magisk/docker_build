@@ -1,9 +1,11 @@
-name: vaxilu-x-ui.yaml
+#https://github.com/tindy2013/subconverter
+#https://github.com/find-xposed-magisk/subconverter
+name: tindy2013-subconverter.yaml
 
 env:
-  ORIGINAL_OWNER: ORIGINAL_OWNER
-  ORIGINAL_REPOSITORY: ORIGINAL_REPOSITORY
-  MYORIGINAL_REPOSITORY: x-ui
+  ORIGINAL_OWNER: tindy2013
+  ORIGINAL_REPOSITORY: subconverter
+  MYORIGINAL_REPOSITORY: subconverter
   UPSTREAM_BRANCH: main
   MY_BRANCH: main
 
