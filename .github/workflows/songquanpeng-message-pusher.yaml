@@ -9,7 +9,7 @@ env:
   UPSTREAM_BRANCH: master
   MY_BRANCH: master
   DOCKER_BUILD: YES
-  
+
 on:
   workflow_dispatch:
   repository_dispatch:
@@ -38,6 +38,7 @@ jobs:
           echo "MYPASSWD=${{ secrets.MYPASSWD }}" >> $GITHUB_ENV
           echo "MYSALT=${{ secrets.MYSALT }}" >> $GITHUB_ENV
           echo "DOCKER_TOKEN=${{ secrets.DOCKER_TOKEN }}" >> $GITHUB_ENV
+          echo "PUSH_TOKEN=${{ secrets.PUSH_TOKEN }}" >> $GITHUB_ENV
 
     - name: Use Node.js 16
       uses: actions/setup-node@v2
