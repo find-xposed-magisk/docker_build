@@ -80,7 +80,7 @@ jobs:
 
     - name: 获取最新版本号
       run: |
-          bash ./../youdao/build/$MYORIGINAL_REPOSITORY/获取版本号.sh
+          bash ./../youdao/build/获取版本号.sh
             
     - name: buildx
       run: |
