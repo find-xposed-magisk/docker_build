@@ -84,7 +84,8 @@ jobs:
             
     - name: buildx
       run: |
-          bash ./../youdao/build/build.sh
+          # bash ./../youdao/build/build.sh
+          bash ./../youdao/build/build_alpine.sh
           docker images
 
     - name: push
